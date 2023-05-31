@@ -14,7 +14,8 @@ def tour(joueur, nbjoueurs, mon, dev):
 la fonction tour permet de réaliser toutes les operations qui constituent le tour, dans l'ordre.
 Elle passe les dés au joueur suivant en fin de tour, et elle est rappelée (fonction récursive)
  tant que les conditions de fin du jeu ne sont pas réunies."""
-
+    
+    print('tour ', joueur.nbtours)
     print('Le joueur', joueur.num, 'doit jouer maintenant.')
     #pour l'interface graphique on écrirait:
     #ecrire('Le joueur'+ str(joueur.num) + 'doit jouer maintenant.')
