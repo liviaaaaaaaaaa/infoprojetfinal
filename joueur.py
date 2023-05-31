@@ -322,15 +322,15 @@ class Joueur():
         monu=mon
         Listem=[]
         for i in monu:
-            booli=False
+            booli=0
             for j in ListeJoueurs:
                 if i[0] in j.monuments:
-                    booli=True
-            if i[-1]!=0:
-                booli=True
+                    booli=1
+            if i[-1]==0:    #certains monuments ne sont pas inclus dans le jeu selon le nombre de joueurs
+                booli=1
             Listem.append(booli)
-        if Listem==[True, True, True, True, True, True, True]:   #si tous les monuments ont étés construits
-            monum=True       #alors une condition est remplie
+        if Listem==[1, 1, 1, 1, 1, 1, 1]:   #si tous les monuments ont étés construits
+            monum=True       #alors une condition de fin est remplie
 
         unjoueur = False
         if len(ListeJoueurs) == 1:
@@ -343,7 +343,7 @@ class Joueur():
 
 def findujeu(ListeJoueurs):
     """Livia Gattacceca-
-    findujeu est appelée si les condisitions de fin sont réunies,
+    findujeu est appelée si les conditions de fin sont réunies,
     elle renvoie la liste des joueurs et leurs points triés dans l'ordre."""
 
     ListeJoueurs = ListeJoueurs
@@ -367,6 +367,7 @@ def findujeu(ListeJoueurs):
             index = points.index(maxi)
             gagnants.append(["Joueur", ListeJoueurs[index].num, maxi])  #on ajoute les joueurs par ordre de points, avec leur rang et leur score
             points.pop(index)
+    print(gagnants)
     print('Voici une liste des joueurs par odre de points, et de leurs points. Bien joué!')
     return gagnants
 
