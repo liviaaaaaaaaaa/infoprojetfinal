@@ -25,7 +25,7 @@ def resoudre(joueur, destires):
         if Revolte.dev not in joueur.developpements:
             Revolte.declencher(Revolte(), joueur)
         elif Revolte.dev in joueur.developpements:
-            for i in ListeJoueurs:
+            for i in ListeJoueurs: #dans ce cas on applique aux autres joueurs
                 if Revolte.dev not in i.developpements and i != joueur:
                     Revolte.declencher(Revolte(), i)
 
@@ -35,18 +35,18 @@ class Desastre():
      Chaque classe fille correspond a un désastre et permet de definir ses effets."""
 
     def declencher(self, joueur):
-        print(self.nom, "a été déclenchée:", self.effet)
+        print(self.nom, "a été déclenchée:", self.effet)  #cela va s'appliquer, peu importe le désastre
 
 
 
 
 
-class Famine(Desastre):
+class Famine(Desastre):  #hérite de Desastre
     nom = "Famine"
     effet = "Vous perdez 1 point pour chaque ville que vous ne pouvez pas alimenter."
     dev = ''
 
-    def declencher(self, joueur):
+    def declencher(self, joueur):   #cette fonction viendra compléter celle dans désastre
         super().declencher(joueur)
         joueur.points -= joueur.cites - joueur.nourriture
 
