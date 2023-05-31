@@ -73,7 +73,7 @@ def achat(joueur, mon, dev):  # fonction construire progressivement les cités o
         print("Vous avez " , joueur.constructeurs , "constructeurs")
         if joueur.cites != 7:
             print('0 : cités, nombre de cases à cocher pour construire la prochaine cité :' , (
-                        Type.cites(Type(),joueur) - joueur.casecites) , '\n')
+                        cites(joueur) - joueur.casecites) , '\n')
         if not (mon[0] in joueur.monuments):
             print('1 : Petite Pyramide, nombre de cases à cocher avant la construction :' , (
                         mon[0][2] - joueur.casemonuments[0][1]) , '\n')
