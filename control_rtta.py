@@ -5,35 +5,33 @@ Classe Type contenant les cites et les developpements pour faciliter le traiteme
 relatives à chacun par la suite'''
 
 
-class Type:
-    # def __init__(self, ):
-    # self.nom = nom
 
-    """Marie Lissillour
-    renvoie en fonction du nombre actuel de cités d'un joueur le nombre de constructeurs
-    nécessaires pour construire la cité suivante"""
 
-    def cites(self, joueur):
-        if joueur.cites == 3:
-            nb_const = 3
-        if joueur.cites == 4:
-            nb_const = 4
-        if joueur.cites == 5:
-            nb_const = 5
-        if joueur.cites == 6:
-            nb_const = 6
-        return nb_const
+"""Marie Lissillour
+renvoie en fonction du nombre actuel de cités d'un joueur le nombre de constructeurs
+nécessaires pour construire la cité suivante"""
 
-    '''Marie Lissillour
-    création d'une liste contenant les informations sur chaque développement'''
+def cites(self, joueur):
+    if joueur.cites == 3:
+        nb_const = 3
+    if joueur.cites == 4:
+        nb_const = 4
+    if joueur.cites == 5:
+        nb_const = 5
+    if joueur.cites == 6:
+        nb_const = 6
+    return nb_const
 
-    def developpement(self):
-        developpement = [[1, 'Leadership', 10, 2], [2, 'Irrigation', 10, 2], [3, 'Agriculture', 15, 3],
-                         [4, 'Carriere', 15, 3], [5, 'Medecine', 15, 3], [6, 'Finance', 20, 4], [7, 'Caravanes', 20, 4],
-                         [8, 'Religion', 20, 6], [9, 'Grenier', 30, 6], [10, 'Maconnerie', 30, 6],
-                         [11, 'Ingenieurie', 40, 6], [12, 'Architecture', 50, 8], [13, 'Empire', 60, 8]]
-        # [numéro du développement, nom du développement, coût, nb de points que ça rapporte]
-        return developpement
+'''Marie Lissillour
+création d'une liste contenant les informations sur chaque développement'''
+
+def developpement(self):
+    developpement = [[1, 'Leadership', 10, 2], [2, 'Irrigation', 10, 2], [3, 'Agriculture', 15, 3],
+                     [4, 'Carriere', 15, 3], [5, 'Medecine', 15, 3], [6, 'Finance', 20, 4], [7, 'Caravanes', 20, 4],
+                     [8, 'Religion', 20, 6], [9, 'Grenier', 30, 6], [10, 'Maconnerie', 30, 6],
+                     [11, 'Ingenieurie', 40, 6], [12, 'Architecture', 50, 8], [13, 'Empire', 60, 8]]
+    # [numéro du développement, nom du développement, coût, nb de points que ça rapporte]
+    return developpement
 
 
 '''Marie Lissillour
