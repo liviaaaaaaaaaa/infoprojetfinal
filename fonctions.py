@@ -1,4 +1,4 @@
-
+#POUR JOUER EXECUTER CE FICHIER  /!\
 
 
 
@@ -7,31 +7,19 @@ from catastrophes import *
 from control_rtta import *
 
 
-
-
-
-
-
-#afficher les points sur le bon nombre de ressources
-
-
-
-#POUR JOUER EXECUTER CE FICHIER  /!\
-
-#Par livia gattacceca
-
-
 def tour(joueur, nbjoueurs, mon, dev):
     nbjoueurs=nbjoueurs
 
     """Livia Gattacceca_
 la fonction tour permet de réaliser toutes les operations qui constituent le tour, dans l'ordre.
 Elle passe les dés au joueur suivant en fin de tour, et elle est rappelée (fonction récursive)
- tant que les conditions de fin ne sont pas réunies."""
+ tant que les conditions de fin du jeu ne sont pas réunies."""
 
     print('Le joueur', joueur.num, 'doit jouer maintenant.')
+    #pour l'interface graphique on écrirait:
     #ecrire('Le joueur'+ str(joueur.num) + 'doit jouer maintenant.')
 
+    #on appelle toutes les fonctions qui constituent un tour de jeu
     destires = joueur.lancerdes(nbjoueurs)
 
     joueur.recupdes(destires)
@@ -40,8 +28,8 @@ Elle passe les dés au joueur suivant en fin de tour, et elle est rappelée (fon
     achat(joueur, mon, dev)
     achat_dev(joueur, dev)
     joueur.defaussermarchandise()
-    joueur.nbtours += 1
-    joueur = joueur.passerdes(mon)
+    joueur.nbtours += 1       #compteur de tours (utile dans le cas ou le joueur est seul: la partie s'arrete au bout d'un certain nombre de tours)
+    joueur = joueur.passerdes(mon)   #on passe les dés puis on applique la fonction tour au nouveau joueur
 
     tour(joueur,nbjoueurs, mon, dev)   # fonction récursive
 
