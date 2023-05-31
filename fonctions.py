@@ -42,7 +42,7 @@ def Partie():
     initialise le plateau, et lance le jeu en appelant la fonction tour."""
 
     mon = Monuments()
-    dev = Type.developpement(Type())
+    dev = developpement()
 
     nombrejoueurs=0
     while nombrejoueurs not in ['1', '2', '3', '4']:
