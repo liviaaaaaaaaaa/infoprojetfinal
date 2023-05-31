@@ -149,12 +149,14 @@ def achat(joueur, mon, dev):  # fonction construire progressivement les cités o
 def achat_dev(joueur, dev):  # achat de développement
     '''Marie Lissillour et Livia Gattacceca
     achat des développements'''
-
+    
+    #On commence par calculer ce que le joueur possède pour payer, pour voir quels monuments sont disponibles pour lui.
     monnaie = joueur.pieces + joueur.boisreel + joueur.pierrereel + joueur.poteriereel + joueur.tissureel + joueur.lancereel
-    if 'Grenier' in joueur.developpements:
+    if 'Grenier' in joueur.developpements: #les joueurs possédant le grenier peuvent payer avec de la nourriture
         monnaie+=joueur.nourriture
-    dev_dispo = []
-    achetes = []
+     
+    dev_dispo = []  #On crée une liste des développements qui sont disponibles
+    achetes = []    #et une liste des développements déja achetés par le joueur
     for i in range(len(dev)):
         if dev[i][1] not in joueur.developpements:  # création d'une liste avec les développements non achetés
             dev_dispo.append(dev[i])
@@ -164,51 +166,51 @@ def achat_dev(joueur, dev):  # achat de développement
     for i in dev_dispo:
         if i[2]<= monnaie:
             c+=1
-
-
-    if c==0:
+    if c==0:       #si le joueur ne peut acheter aucun monument, on sort de la fonction
         return
 
     print(dev_dispo)
+    #on affiche les développements disponibles avec leur prix pour que le joueur puisse choisir
     for l in range(len(dev_dispo)):
         print(str(dev_dispo[l][0]) , " : " + dev_dispo[l][1] , ", à " , dev_dispo[l][2] , "pièces" , "\n")
-
+    #on indique également le développement maximal qu'il peut acheter en termes de cout (mais on les affiche tous pour qu'il ^puisse réfléchir sur le long terme)
     print('développement maximal autorisé: ', c)
     reponse = input("Voulez-vous acheter un développement ?")
-    reponse=reponse.upper()
+    
     while reponse.upper().strip()!='OUI' and reponse.upper().strip!='NON':
         print(reponse.upper().strip())
-        reponse=input('Rentrez Oui ou Non.')
+        reponse=input('Rentrez Oui ou Non.')    #en cas d'erreur de frappe , on redemande
     if reponse.upper().strip() == "OUI":
         reponse = input("Que voulez-vous acheter ?")
+        #on s'assure que l'entrée correspond bien à un monument
         while reponse.strip()!= '0' and reponse.strip()!='1' and reponse.strip() != '2' and reponse.strip()!= '3' and reponse.strip()!='4' and reponse.strip() != '5' and reponse.strip()!= '6' and reponse.strip()!='7' and reponse.strip() != '8' and reponse.strip()!= '9' and reponse.strip()!='10' and reponse.strip() != '11' and reponse.strip()!= '12' and reponse.strip()!='13' :
             reponse = input("Que voulez-vous acheter ? Entrez un chiffre.")
         achat = int(reponse.strip())
-        while achat in achetes or achat>c: #dev[int(achat)-1][2] >= monnaie:
+        #si le developpement est trop cher ou deja acheté, on redemande
+        while achat in achetes or achat>c: 
             print("Vous avez déjà acheté ce développement, ou il est trop cher, veuillez en choisir un autre")
             reponse = input("Que voulez-vous acheter ?")
             while reponse.strip() not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"] or dev[achat - 1][2] >= monnaie:
                 reponse = input("Que voulez-vous acheter ? Entrez un autre chiffre, ce développement est trop cher ou n'existe pas.")
             achat = int(reponse)
-        if dev[achat-1][2] <= monnaie:
+        if dev[achat-1][2] <= monnaie:     #on applique les effets de l'acquisition du développement au joueur
             print("Vous avez acheté" , dev[achat - 1][1])
             joueur.developpements.append(dev[achat - 1][1])
             joueur.points += dev[achat - 1][3]
-            paye = 0
+            #on va maintenenant  procéder au payment
+            paye = 0   #somme que le joueur a payé
             payement = [joueur.pieces, joueur.boisreel, joueur.pierrereel, joueur.poteriereel, joueur.tissureel,
                         joueur.lancereel, joueur.nourriture]
-            while paye < dev[achat - 1][2]:
+            while paye < dev[achat - 1][2]: #on va donner le choix au joueur du moyen de paiement qu'il souhaite utiliser
                 print(
                     "0 : pièces" + "\n" + "1 : bois" + "\n" + "2 : pierre" + "\n" + "3 : poterie" + "\n" + "4 : tissu" + "\n" + "5 : lance" + "\n" + "6 : nourriture, seulement si vous avez le grenier.")
                 espece = input("Que voulez vous utiliser ? ")
-                while espece.strip()not in ['0', '1', '2', '3', '4', '5', '6']:
+                while espece.strip()not in ['0', '1', '2', '3', '4', '5', '6']:   #en cas d'erreur d'entrée
                     espece=input('Que voulez-vous utiliser? Entrez un chiffre entre 0 et 6.')
-                while int(espece) not in range(7):
-                    print("Ce moyen de paiement n'existe pas. Veuillez-choisir une des propositions ci-dessus ")
-                    espece = input("Que voulez vous utiliser ? ")
-                paye += payement[int(espece)]
+            
+                paye += payement[int(espece)]   #on additionne le montant payé a la somme déja payée
                 print('payé : ', paye)
-                if Type.developpement(Type())[9][1] not in joueur.developpements and int(espece)==6:
+                if Type.developpement(Type())[9][1] not in joueur.developpements and int(espece)==6:   #seuls les joueurs avec la grange peuvent payer avec de la nourriture
                     print('Vous ne pouvez pas utiliser la nourriture pour payer.')
                     espece=input("Que voulez vous utiliser ? Hors nourriture.")
                     while espece.strip() not in ['0', '1', '2', '3', '4', '5', '6']:
@@ -216,8 +218,8 @@ def achat_dev(joueur, dev):  # achat de développement
                 if Type.developpement(Type())[9][1] in joueur.developpements:  # si le joueur a le grenier
                     if int(espece) == 6:
                         joueur.piece += 4 * joueur.nourriture
-                payement[int(espece)] = 0
+                payement[int(espece)] = 0  #on ramene la nourriture à 0 (règle)
 
-    joueur.pieces = 0
+    joueur.pieces = 0  #on ramène les pieces à 0 (règle)
 
 
