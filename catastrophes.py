@@ -5,7 +5,7 @@ from joueur import *
 def resoudre(joueur, destires):
     """Livia Gattacceca-
     permet d'appliquer les effets des desastres"""
-
+#on considère les conditions pour déclencher les désastres, ainsi que les effets de certains développements 
     if joueur.nourriture < joueur.cites:
         Famine.declencher(Famine(), joueur)
     if destires.count('2 marchandises et un crane') == 2 and Secheresse.dev not in joueur.developpements:
@@ -13,7 +13,7 @@ def resoudre(joueur, destires):
     if destires.count('2 marchandises et un crane') == 3:
         if len(ListeJoueurs) == 1 and Peste.dev not in joueur.developpements:
             Peste.declencher(Peste(), joueur)
-        if len(ListeJoueurs) > 1:
+        if len(ListeJoueurs) > 1:  #s'il y a plusieurs joueurs, lorsque la peste est déclenchée par un joueur, elle touche ses adversaires (s'ils n'ont pas la medecine)
             print("La peste touche vos ennemis.")
             for i in ListeJoueurs:
                 if Peste.dev not in i.developpements and i != joueur:
