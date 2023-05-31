@@ -202,12 +202,12 @@ def achat_dev(joueur, dev):  # achat de développement
             
                 paye += payement[int(espece)]   #on additionne le montant payé a la somme déja payée
                 print('payé : ', paye)
-                if Type.developpement(Type())[9][1] not in joueur.developpements and int(espece)==6:   #seuls les joueurs avec la grange peuvent payer avec de la nourriture
+                if developpement()[9][1] not in joueur.developpements and int(espece)==6:   #seuls les joueurs avec la grange peuvent payer avec de la nourriture
                     print('Vous ne pouvez pas utiliser la nourriture pour payer.')
                     espece=input("Que voulez vous utiliser ? Hors nourriture.")
                     while espece.strip() not in ['0', '1', '2', '3', '4', '5', '6']:
                         espece = input('Que voulez-vous utiliser? Entrez un chiffre entre 0 et 5.')
-                if Type.developpement(Type())[9][1] in joueur.developpements:  # si le joueur a le grenier
+                if developpement()[9][1] in joueur.developpements:  # si le joueur a le grenier
                     if int(espece) == 6:
                         joueur.piece += 4 * joueur.nourriture
                 payement[int(espece)] = 0  #on ramene la nourriture à 0 (règle)
