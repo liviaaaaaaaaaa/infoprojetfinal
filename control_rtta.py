@@ -101,7 +101,7 @@ def achat(joueur, mon, dev):  # fonction construire progressivement les cités o
 
             if num == 0:  # construction de cité
                 joueur.casecites += 1
-                if joueur.casecites == Type.cites(Type(),joueur):
+                if joueur.casecites == cites(joueur):
                     joueur.cites += 1
                     joueur.casecites = 0
                     print("Vous avez acheté une cité supplémentaire. Vous avez maintenant " , joueur.cites , " cités")
