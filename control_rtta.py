@@ -36,8 +36,8 @@ class Type:
         return developpement
 
 
-'''Marie Lissillour'''
-
+'''Marie Lissillour
+Class Monuments qui permet de référencer les différents monuments avec leurs propriétés propres'''
 
 class Monuments(list):
     def __init__(self):
@@ -63,7 +63,6 @@ class Monuments(list):
 '''Marie Lissillour
 à chaque tour nourrissage des cités'''
 
-
 def nourrir_cites(joueur):
     if joueur.nourriture > joueur.cites:
         joueur.nourriture -= joueur.cites
@@ -74,8 +73,8 @@ def nourrir_cites(joueur):
 
 
 '''Marie Lissillour
-placement des constructeurs afin de batir progressivement les cités et les monuments'''
-
+placement des constructeurs afin de batir progressivement les cités et les monuments
+Interraction'''
 
 def achat(joueur, mon, dev):  # fonction construire progressivement les cités ou les monuments
     while joueur.constructeurs != 0:
