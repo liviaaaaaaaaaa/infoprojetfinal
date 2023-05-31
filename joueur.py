@@ -365,10 +365,12 @@ def findujeu(ListeJoueurs):
         nombre = points.count(maxi)     #si jamais deux joueurs ont le meme score
         for i in range(nombre):
             index = points.index(maxi)
-            gagnants.append(['Joueur '+str("Joueur"), 'rang '+ str(ListeJoueurs[index].num), 'score : '+str(maxi)])  #on ajoute les joueurs par ordre de points, avec leur rang et leur score
+            #on ajoute les joueurs par ordre de points, avec leur rang et leur score
+            gagnants.append(['Joueur '+str(ListeJoueurs[index].num), 'score : '+str(maxi)]) 
             points.pop(index)
     
     print('Voici une liste des joueurs par ordre de points, et de leurs points. Bien joué!')
     print(gagnants)
-    return gagnants
+    
+    return 
 
