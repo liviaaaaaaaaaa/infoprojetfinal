@@ -38,17 +38,20 @@ class Desastre():
         print(self.nom, "a été déclenchée:", self.effet)  #cela va s'appliquer, peu importe le désastre
 
 
-
+#toutes les fonctions qui héritent de désastre sont codées de la meme facon:
+#on définit d'abord le nom, l'effet, et le développement qui permet d'éviter le desastre s'il y en a un, 
+#puis on utilise une fonction (declencher) qui viendra compléter la fonction declencher de la classe mère, en appliquand l'effet propre a chaque désastre
 
 
 class Famine(Desastre):  #hérite de Desastre
-    nom = "Famine"
+    """on définit le nom, l'effet, et le développement qui permet de parer ce désastre, s'il y en a un"""
+    nom = 'Famine'
     effet = "Vous perdez 1 point pour chaque ville que vous ne pouvez pas alimenter."
     dev = ''
 
-    def declencher(self, joueur):   #cette fonction viendra compléter celle dans désastre
+    def declencher(self, joueur):   #cette fonction viendra compléter celle dans la classe mere desastre
         super().declencher(joueur)
-        joueur.points -= joueur.cites - joueur.nourriture
+        joueur.points -= joueur.cites - joueur.nourriture  #on applique l'effet du désastre au joueur concerné
 
 
 class Secheresse(Desastre):
@@ -89,7 +92,7 @@ class Revolte(Desastre):
 
     def declencher(self, joueur):
         super().declencher(joueur)
-        joueur.bois = 0
+        joueur.bois = 0     #effet sur le joueur
         joueur.pierre = 0
         joueur.poterie = 0
         joueur.tissu = 0
