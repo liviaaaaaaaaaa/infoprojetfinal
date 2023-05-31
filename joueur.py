@@ -1,7 +1,7 @@
 import random as rd
 from control_rtta import *
 import sys
-
+nouveau 
 #Par Livia Gattacceca
 
 ListeJoueurs = []
