@@ -1,17 +1,11 @@
 import numpy
-#import fonctions
-'''Marie Lissillour 
-Classe Type contenant les cites et les developpements pour faciliter le traitement des données 
-relatives à chacun par la suite'''
-
-
 
 
 """Marie Lissillour
 renvoie en fonction du nombre actuel de cités d'un joueur le nombre de constructeurs
 nécessaires pour construire la cité suivante"""
 
-def cites(self, joueur):
+def cites(joueur):
     if joueur.cites == 3:
         nb_const = 3
     if joueur.cites == 4:
@@ -25,7 +19,7 @@ def cites(self, joueur):
 '''Marie Lissillour
 création d'une liste contenant les informations sur chaque développement'''
 
-def developpement(self):
+def developpement():
     developpement = [[1, 'Leadership', 10, 2], [2, 'Irrigation', 10, 2], [3, 'Agriculture', 15, 3],
                      [4, 'Carriere', 15, 3], [5, 'Medecine', 15, 3], [6, 'Finance', 20, 4], [7, 'Caravanes', 20, 4],
                      [8, 'Religion', 20, 6], [9, 'Grenier', 30, 6], [10, 'Maconnerie', 30, 6],
